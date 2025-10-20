@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Redbubble-Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    header {
+      background-color: #ff6f61;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin: 10px 0 20px 0;
+    }
+    .btn {
+      background-color: white;
+      color: #ff6f61;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #ffe6e0;
+    }
+    section {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ff6f61;
+    }
+    .about, .contact {
+      text-align: center;
+    }
+
+    /* Slider Styles */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      margin: auto;
+      border-radius: 10px;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* Navigation Buttons */
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.7);
+      color: #ff6f61;
+      font-weight: bold;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .prev:hover, .next:hover {
+      background-color: #ffe6e0;
+    }
+    .prev {
+      left: 10px;
+    }
+    .next {
+      right: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    footer a {
+      color: #ff6f61;
+      margin: 0 10px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Hero -->
+  <header>
+    <h1>Dein Name / Künstlername</h1>
+    <p>Coole Designs für jeden Anlass – Shop kommt bald!</p>
+    <a href="#" class="btn">Zu meinem Redbubble-Shop</a>
+  </header>
+
+  <!-- Über mich -->
+  <section class="about">
+    <h2>Über mich</h2>
+    <p>Hallo! Ich bin ein angehender Designer und erstelle einzigartige Illustrationen und Designs. Meine Werke sind inspiriert von Kreativität, Humor und Liebe zu Details. Bald findest du hier meine eigenen Produkte auf Redbubble!</p>
+  </section>
+
+  <!-- Slider für Designs -->
+  <section class="designs">
+    <h2>Meine Designs (Platzhalter)</h2>
+    <div class="slider-container">
+      <div class="slides">
+        <img src="https://via.placeholder.com/800x600?text=Design+1" alt="Design 1">
+        <img src="https://via.placeholder.com/800x600?text=Design+2" alt="Design 2">
+        <img src="https://via.placeholder.com/800x600?text=Design+3" alt="Design 3">
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Kontakt / Social Media -->
+  <section class="contact">
+    <h2>Kontakt & Social Media</h2>
+    <p>Folge mir auf Social Media oder schreibe mir eine Nachricht.</p>
+    <p>
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a> |
+      <a href="#">Facebook</a>
+    </p>
+    <p>Email: <a href="mailto:beispiel@email.de">beispiel@email.de</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Dein Name | <a href="#">Redbubble-Shop</a>
+  </footer>
+
+  <script>
+    const slides = document.querySelector('.slides');
+    const slideImages = document.querySelectorAll('.slides img');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    let index = 0;
+
+    function showSlide(i) {
+      if (i < 0) index = slideImages.length - 1;
+      else if (i >= slideImages.length) index = 0;
+      else index = i;
+      slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+    }
+
+    prev.addEventListener('click', () => showSlide(index - 1));
+    next.addEventListener('click', () => showSlide(index + 1));
+
+    // Automatischer Slider alle 4 Sekunden
+    setInterval(() => showSlide(index + 1), 4000);
+  </script>
+
+</body>
+</html>
